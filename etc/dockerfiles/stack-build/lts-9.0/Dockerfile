@@ -1,11 +1,16 @@
-FROM ubuntu:16.04
+#FROM ubuntu:16.04
+#FROM debian:testing
+#FROM ubuntu:17.10
+#FROM ubuntu:artful-20171116
+FROM ubuntu:18.04
 
 MAINTAINER Emanuel Borsboom <manny@fpcomplete.com>
 
 ARG GHC_VERSION=8.0.2
-ARG LTS_SLUG=lts-9.0
+ARG LTS_SLUG=lts-9.3
 ARG PID1_VERSION=0.1.0.1
-ARG BOOTSTRAP_COMMIT=1bc67bb54eda08c90d8421bc11d257354a379d11
+#ARG BOOTSTRAP_COMMIT=1bc67bb54eda08c90d8421bc11d257354a379d11
+ARG BOOTSTRAP_COMMIT=d56ba6858810cb31ae477267deb2ddf9738d056c
 ARG DEBIAN_FRONTEND=noninteractive
 
 #
@@ -16,14 +21,17 @@ ENV LANG=C.UTF-8 \
     LC_ALL=C.UTF-8 \
     PATH=/root/.cabal/bin:/root/.local/bin:/opt/ghc/$GHC_VERSION/bin:$PATH
 
+# RUN apt-get update && \
+#     apt-get install -y gnupg
 #
 # Use Stackage's debian-bootstrap.sh script to install system libraries and
 # tools required to build any Stackage package.
 #
 
 RUN apt-get update && \
+    apt-get install -y ghc ghc-dynamic libghc-html-doc ghc-prof && \
     apt-get install -y wget && \
-    wget -qO- https://raw.githubusercontent.com/fpco/stackage/$BOOTSTRAP_COMMIT/debian-bootstrap.sh | bash && \
+    wget -qO- https://raw.githubusercontent.com/peterbecich/stackage/$BOOTSTRAP_COMMIT/debian-bootstrap.sh | bash && \
     ln -s ghc /opt/ghc/$GHC_VERSION/share/doc/ghc-$GHC_VERSION && \
     rm -rf /var/lib/apt/lists/*
 
