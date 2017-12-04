@@ -1,8 +1,8 @@
 #FROM ubuntu:16.04
-#FROM debian:testing
+FROM debian:testing
 #FROM ubuntu:17.10
 #FROM ubuntu:artful-20171116
-FROM ubuntu:18.04
+# FROM ubuntu:18.04
 
 MAINTAINER Emanuel Borsboom <manny@fpcomplete.com>
 
@@ -10,7 +10,8 @@ ARG GHC_VERSION=8.0.2
 ARG LTS_SLUG=lts-9.3
 ARG PID1_VERSION=0.1.0.1
 #ARG BOOTSTRAP_COMMIT=1bc67bb54eda08c90d8421bc11d257354a379d11
-ARG BOOTSTRAP_COMMIT=d56ba6858810cb31ae477267deb2ddf9738d056c
+
+ARG BOOTSTRAP_COMMIT=d2fce8c124a0ae577bcf761b092a28313f915869
 ARG DEBIAN_FRONTEND=noninteractive
 
 #
@@ -29,7 +30,7 @@ ENV LANG=C.UTF-8 \
 #
 
 RUN apt-get update && \
-    apt-get install -y ghc ghc-dynamic libghc-html-doc ghc-prof && \
+    # apt-get install -y ghc ghc-dynamic libghc-html-doc ghc-prof && \
     apt-get install -y wget && \
     wget -qO- https://raw.githubusercontent.com/peterbecich/stackage/$BOOTSTRAP_COMMIT/debian-bootstrap.sh | bash && \
     ln -s ghc /opt/ghc/$GHC_VERSION/share/doc/ghc-$GHC_VERSION && \
