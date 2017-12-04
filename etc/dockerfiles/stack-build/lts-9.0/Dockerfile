@@ -33,9 +33,9 @@ RUN apt-get update && \
     # apt-get install -y ghc ghc-dynamic libghc-html-doc ghc-prof && \
     apt-get install -y wget && \
     wget -qO- https://raw.githubusercontent.com/peterbecich/stackage/$BOOTSTRAP_COMMIT/debian-bootstrap.sh | bash && \
-    ln -s ghc /opt/ghc/$GHC_VERSION/share/doc/ghc-$GHC_VERSION && \
     rm -rf /var/lib/apt/lists/*
 
+# ln -s ghc /opt/ghc/$GHC_VERSION/share/doc/ghc-$GHC_VERSION && \
 #
 # Use 'stack' to install basic Haskell tools like alex, happy, and cpphs. We
 # remove most of the STACK_ROOT afterward to save space, but keep the 'share'
