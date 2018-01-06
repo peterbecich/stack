@@ -1,6 +1,8 @@
-FROM ubuntu:16.04
+#FROM arm64v8/ubuntu:18.04
+FROM peterbecich/ghc-arm64:latest
 
-MAINTAINER Emanuel Borsboom <manny@fpcomplete.com>
+#MAINTAINER Emanuel Borsboom <manny@fpcomplete.com>
+MAINTAINER Peter Becich <peterbecich@gmail.com>
 
 ARG GHC_VERSION=8.2.2
 ARG LTS_SLUG=lts-10.0
@@ -57,7 +59,11 @@ RUN wget -O- "https://github.com/fpco/pid1/releases/download/pid1%2F$PID1_VERSIO
 # Install Stack
 #
 
-RUN wget -qO- https://github.com/commercialhaskell/stack/releases/download/v$STACK_VERSION/stack-$STACK_VERSION-linux-x86_64.tar.gz | tar xz --wildcards --strip-components=1 -C /usr/local/bin '*/stack'
+# RUN wget -qO- https://github.com/commercialhaskell/stack/releases/download/v$STACK_VERSION/stack-$STACK_VERSION-linux-x86_64.tar.gz | tar xz --wildcards --strip-components=1 -C /usr/local/bin '*/stack'
+
+# RUN wget -qO- https://raw.githubusercontent.com/commercialhaskell/stack/master/etc/scripts/get-stack.sh | sh
+
+RUN wget -qO- https://get.haskellstack.org/ | sh
 
 #
 # Set up pid1 entrypoint and default command
