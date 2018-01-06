@@ -69,7 +69,7 @@ RUN stack --system-ghc --resolver=$LTS_SLUG --local-bin-path=/usr/local/bin inst
 
 # RUN wget -qO- https://raw.githubusercontent.com/commercialhaskell/stack/master/etc/scripts/get-stack.sh | sh
 
-RUN wget -qO- https://get.haskellstack.org/ | sh
+# RUN wget -qO- https://get.haskellstack.org/ | sh
 
 #
 # Set up pid1 entrypoint and default command
