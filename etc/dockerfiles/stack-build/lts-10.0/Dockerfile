@@ -39,7 +39,7 @@ RUN apt-get update && \
 # Create symlink to help tools find GHC documentation
 #
 
-RUN ln -s ghc /opt/ghc/$GHC_VERSION/share/doc/ghc-$GHC_VERSION
+# RUN ln -s ghc /opt/ghc/$GHC_VERSION/share/doc/ghc-$GHC_VERSION
 
 #
 # Use 'stack' to install basic Haskell tools like alex, happy, and cpphs. We
