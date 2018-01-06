@@ -76,4 +76,6 @@ RUN wget -qO- https://get.haskellstack.org/ | sh
 #
 
 ENTRYPOINT ["/usr/local/sbin/pid1"]
-CMD ["bash"]
+# CMD ["bash"]
+
+CMD echo "done"
