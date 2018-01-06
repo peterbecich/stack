@@ -24,9 +24,15 @@ ENV LANG=C.UTF-8 \
 # tools required to build any Stackage package.
 #
 
+# https://github.com/peterbecich/stackage/blob/arm64/debian-bootstrap.sh
+
+# https://github.com/peterbecich/stackage/blob/arm64_2/debian-bootstrap.sh
+
+# https://raw.githubusercontent.com/peterbecich/stackage/arm64_2/debian-bootstrap.sh
+
 RUN apt-get update && \
     apt-get install -y wget && \
-    wget -qO- https://raw.githubusercontent.com/fpco/stackage/$BOOTSTRAP_COMMIT/debian-bootstrap.sh | bash && \
+    wget -qO- https://raw.githubusercontent.com/peterbecich/stackage/arm64_2/debian-bootstrap.sh | bash && \
     rm -rf /var/lib/apt/lists/*
 
 #
